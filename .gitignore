@@ -1,0 +1,6 @@
+# dotnet core
+bin/
+obj/
+
+# local files
+.local/
