@@ -51,7 +51,7 @@ namespace hashcode2019.src.Services
                     continue;
 
                 for (var i = 0; i < photo?.Scores?.Count; i++)
-                    if (!photosAlreadyPaired.Contains(photo?.Scores[i]?.Item1))
+                    if (!photosAlreadyPaired.Contains(photo?.Scores[i]?.Item1) && !(photo?.Scores[i]?.Item1 as Photo).IsHorizontal)
                     {
                         slides.Add(new Slide(photo, photo.Scores[i]?.Item1 as Photo));
                         photosAlreadyPaired?.Add(photo.Scores[i]?.Item1 as Photo);
