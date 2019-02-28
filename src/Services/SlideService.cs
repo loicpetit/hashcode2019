@@ -40,21 +40,17 @@ namespace hashcode2019.src.Services
         public List<Slide> GetSlides(List<Photo> photos)
         {
             var PhotosV = photos?.Where(x => !x.IsHorizontal).ToList();
-            var photosAlreadyPaired = new HashSet<Photo>();
             var slides = photos?.Where(x => x.IsHorizontal)
                 .Select(x => new Slide(x))
                 .ToList();
 
             foreach (var photo in PhotosV)
             {
-                if (photosAlreadyPaired.Contains(photo))
-                    continue;
-
                 for (var i = 0; i < photo?.Scores?.Count; i++)
-                    if (!photosAlreadyPaired.Contains(photo?.Scores[i]?.Item1))
+                    if (!PhotosV.Contains(photo?.Scores[i]?.Item1))
                     {
                         slides.Add(new Slide(photo, photo.Scores[i]?.Item1 as Photo));
-                        photosAlreadyPaired?.Add(photo.Scores[i]?.Item1 as Photo);
+                        PhotosV.Remove(photo.Scores[i]?.Item1 as Photo);
                     }
             }
 
