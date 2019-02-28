@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace hashcode2019.src.Models
 {
@@ -16,12 +17,21 @@ namespace hashcode2019.src.Models
         public Slide(Photo p1)
         {
             Photo1 = p1;
+            Tags = p1.Tags;
         }
 
         public Slide(Photo p1, Photo p2)
         {
             Photo1 = p1;
             Photo2 = p2;
+
+            Tags = p1.Tags;
+
+            // unique tags
+            p2.Tags.ToList().ForEach(x =>
+            {
+                if (!Tags.Contains(x)) Tags.Add(x);
+            });
         }
     }
 }
