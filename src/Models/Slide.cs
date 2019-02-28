@@ -14,6 +14,8 @@ namespace hashcode2019.src.Models
         public IList<string> Tags { get; set; } = new List<string>();
         public IList<Tuple<IScorable, int>> Scores { get; set; } = new List<Tuple<IScorable, int>>();
 
+        public Slide() { }
+
         public Slide(Photo p1)
         {
             Photo1 = p1;

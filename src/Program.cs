@@ -29,13 +29,16 @@ namespace hashcode2019
             var computePhotoService = new ScoreService<Photo>();
             computePhotoService.Arrange(verticalPics);
 
-            // associate pics>
+            // associate pics
+            var slides = new List<Slide>();
 
             // compute slides scores
+            var computeSlideService = new ScoreService<Slide>();
+            computeSlideService.Arrange(slides);
 
             // generate final slides
 
-            
+
             // Ecriture de l'output
             //var writer = new OutputWriter(slides, config.OutputPath);
             //writer.Write();
