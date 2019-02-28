@@ -1,4 +1,5 @@
 ﻿using hashcode2019.src.Models;
+using hashcode2019.src.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,23 @@ namespace hashcode2019
             // Récupération de l'input
             var input = new InputBuilder(config.InputPath).Build();
 
-            // Traitement
-            var slides = new List<Slide>();
-            input.ToList().ForEach(x =>
-            {
-                slides.Add(new Slide(x));
-            });
+            // vertical pics
+            var verticalPics = input.Where(x => !x.IsHorizontal);
 
+            // compute scores for vertical pics with other vertical pics
+            var computePhotoService = new ScoreService<Photo>();
+            computePhotoService.Arrange(verticalPics);
+
+            // associate pics>
+
+            // compute slides scores
+
+            // generate final slides
+
+            
             // Ecriture de l'output
-            var writer = new OutputWriter(slides, config.OutputPath);
-            writer.Write();
+            //var writer = new OutputWriter(slides, config.OutputPath);
+            //writer.Write();
         }
 
     }
