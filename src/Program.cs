@@ -23,14 +23,15 @@ namespace hashcode2019
             var input = new InputBuilder(config.InputPath).Build();
 
             // vertical pics
-            var verticalPics = input.Where(x => !x.IsHorizontal);
+            //var verticalPics = input.Where(x => !x.IsHorizontal);
 
             // compute scores for vertical pics with other vertical pics
             var computePhotoService = new ScoreService<Photo>();
-            computePhotoService.Arrange(verticalPics);
+            computePhotoService.Arrange(input);
 
             // associate pics
-            var slides = new List<Slide>();
+            SlideService slideService = new SlideService();
+            var slides = null;
 
             // compute slides scores
             var computeSlideService = new ScoreService<Slide>();
