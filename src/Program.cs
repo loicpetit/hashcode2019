@@ -1,4 +1,7 @@
-﻿using System;
+﻿using hashcode2019.src.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace hashcode2019
 {
@@ -19,15 +22,15 @@ namespace hashcode2019
             var input = new InputBuilder(config.InputPath).Build();
 
             // Traitement
-            //Hello h = new Hello(config.Name);
-            //h.Display();
-            //Hello h2 = new Hello(input.Line1);
-            //h2.Display();
-            //Output output = null;
+            var slides = new List<Slide>();
+            input.ToList().ForEach(x =>
+            {
+                slides.Add(new Slide(x));
+            });
 
             // Ecriture de l'output
-            //OutputWriter writer = new OutputWriter(output, config.OutputPath);
-            //writer.Write();
+            var writer = new OutputWriter(slides, config.OutputPath);
+            writer.Write();
         }
 
     }

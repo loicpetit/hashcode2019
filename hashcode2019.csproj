@@ -9,9 +9,10 @@
     <Content Include=".local\a_example.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include=".local\input.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include=".local\b_lovely_landscapes.txt" />
+    <Content Include=".local\c_memorable_moments.txt" />
+    <Content Include=".local\d_pet_pictures.txt" />
+    <Content Include=".local\e_shiny_selfies.txt" />
   </ItemGroup>
 
   <ItemGroup>

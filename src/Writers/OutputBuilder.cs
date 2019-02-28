@@ -25,6 +25,7 @@ namespace hashcode2019
                 File.Delete(Path);
 
             Console.WriteLine("Writing output...");
+            File.AppendAllText(Path, Slides.Count.ToString() + Environment.NewLine);
 
             Slides.ForEach(x =>
             {
