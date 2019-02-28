@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "hashcode2019": {
+      "commandName": "Project",
+      "commandLineArgs": "./.local/app.conf"
+    }
+  }
+}

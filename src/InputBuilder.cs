@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace hashcode2019 {
@@ -13,19 +14,26 @@ namespace hashcode2019 {
 
         public string Path { get; set; }
 
-        public Input Build(){
-            if(File.Exists(Path)){
-                Input intput = new Input();
-                using(StreamReader s = new StreamReader(Path, Encoding.UTF8)){
-                    intput.Line1 = s.ReadLine();
-                    intput.Line2 = s.ReadLine();
-                    intput.Numbers = ParseNumbers(s.ReadLine());
-                    return intput;
-                }                
+        public IEnumerable<Photo> Build()
+        {
+            var collection = new List<Photo>();
+            var lines = File.ReadAllLines(Path).ToList();
+            var totalLines = Convert.ToInt32(lines[0].Trim());
+
+            for(var i=1; i< lines.Count(); i++ )
+            {
+                var parts = lines[i].Split(' ');
+                var photo = new Photo
+                {
+                    Id = i,
+                    IsHorizontal = parts[0].Equals("H"),
+                    Tags = parts.Skip(2).ToList()
+                };
+
+                collection.Add(photo);
             }
-            else {
-                throw new Exception("Le fichier d'input n'existe pas");
-            }
+
+            return collection;
         }
 
         private int[] ParseNumbers(string line){

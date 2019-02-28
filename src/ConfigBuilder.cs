@@ -2,29 +2,39 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace hashcode2019 {
+namespace hashcode2019
+{
 
-    public class ConfigBuilder {
+    public class ConfigBuilder
+    {
 
-        public ConfigBuilder(string path){
+        public ConfigBuilder(string path)
+        {
             Path = path;
         }
 
         public string Path { get; set; }
 
-        public Config Build(){
-            if(File.Exists(Path)){
+        public Config Build()
+        {
+            if (File.Exists(Path))
+            {
                 Config config = new Config();
-                using(StreamReader s = new StreamReader(Path, Encoding.UTF8)){
+                using (StreamReader s = new StreamReader(Path, Encoding.UTF8))
+                {
                     string line = null;
-                    do {
+                    do
+                    {
                         line = s.ReadLine();
-                        if(line != null){
+                        if (line != null)
+                        {
                             string[] keyValue = line.Split("=");
-                            if(keyValue.Length == 2){
+                            if (keyValue.Length == 2)
+                            {
                                 string key = keyValue[0].Trim().ToLower();
                                 string value = keyValue[1].Trim();
-                                switch(key){
+                                switch (key)
+                                {
                                     case "name":
                                         config.Name = value;
                                         break;
@@ -38,11 +48,12 @@ namespace hashcode2019 {
                             }
                         }
                     }
-                    while(line != null);
+                    while (line != null);
                     return config;
-                }                
+                }
             }
-            else {
+            else
+            {
                 throw new Exception("Le fichier de configuration n'existe pas");
             }
         }
