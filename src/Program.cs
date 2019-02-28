@@ -22,7 +22,7 @@ namespace hashcode2019
             // Récupération de l'input
             var input = new InputBuilder(config.InputPath).Build();
 
-            // vertical pics
+            // vertical pics 
             //var verticalPics = input.Where(x => !x.IsHorizontal);
 
             // compute scores for vertical pics with other vertical pics
@@ -31,18 +31,19 @@ namespace hashcode2019
 
             // associate pics
             SlideService slideService = new SlideService();
-            var slides = null;
+            var slides = slideService.GetSlides(input.ToList());
 
             // compute slides scores
             var computeSlideService = new ScoreService<Slide>();
             computeSlideService.Arrange(slides);
 
             // generate final slides
+            var slideshow = slideService.GetCollectionSlides(slides);
 
 
             // Ecriture de l'output
-            //var writer = new OutputWriter(slides, config.OutputPath);
-            //writer.Write();
+            var writer = new OutputWriter(slideshow, config.OutputPath);
+            writer.Write();
         }
 
     }
