@@ -9,7 +9,7 @@ namespace hashcode2019.src.Services
         /// <summary>
         /// Tags
         /// </summary>
-        IEnumerable<string> Tags { get; set; }
+        IList<string> Tags { get; set; }
         /// <summary>
         /// Score with other
         /// </summary>
