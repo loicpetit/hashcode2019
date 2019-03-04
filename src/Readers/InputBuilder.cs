@@ -25,7 +25,7 @@ namespace hashcode2019 {
                 var parts = lines[i].Split(' ');
                 var photo = new Photo
                 {
-                    Id = i,
+                    Id = i - 1,
                     IsHorizontal = parts[0].Equals("H"),
                     Tags = parts.Skip(2).ToList()
                 };
