@@ -1,2 +1,6 @@
 output/*
 !output/.gitkeep
+
+dist/
+
+node_modules/

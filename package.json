@@ -1,0 +1,37 @@
+{
+  "name": "@loicpetitdev/hashcode2019",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "del-cli dist/**/*",
+    "compile": "npm run clean && tsc",
+    "start": "node dist/index.js",
+    "test": "npm run compile && mocha dist/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loicpetit/hashcode2019.git"
+  },
+  "keywords": [
+    "hashcode",
+    "2019"
+  ],
+  "author": "loicpetitdev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loicpetit/hashcode2019/issues"
+  },
+  "homepage": "https://github.com/loicpetit/hashcode2019#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.10.4",
+    "chai": "^4.2.0",
+    "del-cli": "^1.1.0",
+    "mocha": "^6.0.2",
+    "typescript": "^3.3.3333"
+  }
+}
