@@ -2,13 +2,14 @@
   "name": "@loicpetitdev/hashcode2019",
   "version": "1.0.0",
   "description": "",
-  "files": [
-    "dist"
-  ],
+  "main": "dist/index.js",
+  "bin": {
+    "hashcode2019": "./dist/cli.js"
+  },
   "scripts": {
     "clean": "del-cli dist/**/*",
     "compile": "npm run clean && tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/cli.js",
     "test": "npm run compile && mocha dist/**/*.spec.js"
   },
   "repository": {

@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Debug Program",
-            "program": "${workspaceRoot}\\src\\index.ts",
+            "program": "${workspaceRoot}\\src\\cli.ts",
             "args": ["${workspaceRoot}\\input\\file.txt", "${workspaceRoot}\\output\\file.txt"],
             "outFiles": [
                 "${workspaceRoot}\\dist\\**\\*.js"

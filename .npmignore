@@ -1,2 +1,9 @@
 *.spec.js
 *.map
+tsconfig.json
+*.tgz
+
+.vscode/
+input/
+output/
+src/
