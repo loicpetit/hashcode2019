@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import { Readable } from 'stream';
 
 export interface Input {
     id: number,
@@ -9,11 +8,11 @@ export interface Input {
 
 export class InputStream {
 
-    reader: Readable
+    reader: EventEmitter
     event: EventEmitter
     reading: boolean
 
-    constructor(reader: Readable){
+    constructor(reader: EventEmitter){
         this.reader = reader
         this.event = new EventEmitter()
         this.reading = false;
@@ -71,9 +70,9 @@ export class InputStream {
 
     private parseLine(line: string, index: number): Input | null {
         let split = line.split(' ')
-        if(split.length === 3){
+        if(split.length >= 3){
             let direction = split[0]
-            let tags = split.slice(1)
+            let tags = split.slice(2)
             return {
                 id: index,
                 isHorizontal: direction === 'H',

@@ -16,7 +16,7 @@ export class Graph<T> {
             this.nodes.set(id, new Node<T>(id, data))
         }
         else {
-            throw Error(`The id [${id}] already exists`)
+            throw Error(`L\'id [${id}] existe`)
         }
     }
     
@@ -24,10 +24,10 @@ export class Graph<T> {
         let node1 = this.nodes.get(id1)
         let node2 = this.nodes.get(id2)
         if(!node1){
-            throw Error(`Node not found with id1 [${id1}]`)
+            throw Error(`Aucun noeud trouvé pour id1 [${id1}]`)
         }
         if(!node2){
-            throw Error(`Node not found with id2 [${id2}]`)
+            throw Error(`Aucun noeud trouvé pour id2 [${id2}]`)
         }
         let edge = new Edge<T>(node1, node2, weight)
         this.edges.push(edge)

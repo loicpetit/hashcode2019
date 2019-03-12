@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug Program",
             "program": "${workspaceRoot}\\src\\cli.ts",
-            "args": ["${workspaceRoot}\\input\\file.txt", "${workspaceRoot}\\output\\file.txt"],
+            "args": ["${workspaceRoot}\\input\\a_example.txt", "${workspaceRoot}\\output\\a_example.out.txt"],
             "outFiles": [
                 "${workspaceRoot}\\dist\\**\\*.js"
             ],

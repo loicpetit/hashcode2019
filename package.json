@@ -10,7 +10,8 @@
     "clean": "del-cli dist/**/*",
     "compile": "npm run clean && tsc",
     "start": "node dist/cli.js",
-    "test": "npm run compile && mocha dist/**/*.spec.js"
+    "test": "npm run compile && mocha dist/**/*.spec.js",
+    "start:1": "npm start -- input/a_example.txt output/a_example.out.txt"
   },
   "repository": {
     "type": "git",
