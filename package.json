@@ -11,7 +11,11 @@
     "compile": "npm run clean && tsc",
     "start": "node dist/cli.js",
     "test": "npm run compile && mocha dist/**/*.spec.js",
-    "start:1": "npm start -- input/a_example.txt output/a_example.out.txt"
+    "start:a": "npm start -- input/a_example.txt output/a_example.out.txt",
+    "start:b": "npm start -- input/b_lovely_landscapes.txt output/b_lovely_landscapes.out.txt",
+    "start:c": "npm start -- input/c_memorable_moments.txt output/c_memorable_moments.out.txt",
+    "start:d": "npm start -- input/d_pet_pictures.txt output/d_pet_pictures.out.txt",
+    "start:e": "npm start -- input/e_shiny_selfies.txt output/e_shiny_selfies.out.txt"
   },
   "repository": {
     "type": "git",
