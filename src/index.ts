@@ -35,12 +35,12 @@ export default function(inputPath: string, outputPath: string):Promise<void> {
 
                 console.log(`Ecriture du fichier output [${outputPath}]...`)
                 let outputParser = new OutputParser()
-                let writer = new OutputWriter(fs.createWriteStream(outputPath))
+                //let writer = new OutputWriter(fs.createWriteStream(outputPath))
                 for(let slide of slides){
                     let output = outputParser.parse(slide)
                     //writer.write(output)
                 }
-                writer.end()
+                //writer.end()
                 resolve()
             })
             .onError((error) => {

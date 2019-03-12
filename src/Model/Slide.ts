@@ -1,4 +1,5 @@
 import { Photograph } from './Photograph'
+import { merge } from '../Util/ArrayUtil'
 
 export class Slide {
 
@@ -15,7 +16,7 @@ export class Slide {
             this.photograph1 = photograph1
             this.photograph2 = photograph2
             this.tags = []
-            this.tags = this.mergeTags(photograph1.tags, photograph2.tags)
+            this.tags = merge(photograph1.tags, photograph2.tags)
         }
         else {
             if(!photograph1.isHorizontal){
@@ -25,16 +26,6 @@ export class Slide {
             this.tags = []
             this.tags = Object.assign([], photograph1.tags)
         }
-    }
-
-    private mergeTags(tags1: string[], tags2: string[]): string[] {
-        let tags = Object.assign([], tags1)
-        for(let tag2 of tags2){
-            if(!tags.includes(tag2)){
-                tags.push(tag2)
-            }
-        }
-        return tags
     }
 
 }
