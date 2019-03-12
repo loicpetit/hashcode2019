@@ -13,19 +13,20 @@ export class OutputWriter {
         this.writer = writable
     }
 
-    write(outputs: Output[]): Promise<void> {
-        return new Promise<void>((resolve, reject) => {
-            this.writer.write(`${outputs.length}\n`)
-            for(let output of outputs){
-                if(output.id2 !== null){
-                    this.writer.write(`${output.id1} ${output.id2}\n`)
-                }
-                else {
-                    this.writer.write(`${output.id1}\n`)
-                }
-            }
-            this.writer.end()
-            resolve()
-        })
+    writeTotal(total: number){
+        this.writer.write(`${total}\n`)
+    }
+
+    write(output: Output): void {
+        if(output.id2 !== null){
+            this.writer.write(`${output.id1} ${output.id2}\n`)
+        }
+        else {
+            this.writer.write(`${output.id1}\n`)
+        }
+    }
+
+    end() {
+        this.writer.end()
     }
 }

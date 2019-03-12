@@ -6,6 +6,7 @@ describe('OutputWriter', () => {
 
     it('should write output file', () => {
         let lines: string[] = []
+        let ended = false
         let writable = new Writable({
             write: (chunk, encoding, callback) => {
                 lines.push(chunk.toString())
@@ -23,13 +24,15 @@ describe('OutputWriter', () => {
             id2: null
         }]
         let outputWriter = new OutputWriter(writable)
-        return outputWriter.write(outputs).then(() => {
-            expect(lines.length).to.equals(outputs.length + 1)
-            expect(lines[0]).to.equals('3\n')
-            expect(lines[1]).to.equals('1\n')
-            expect(lines[2]).to.equals('3 2\n')
-            expect(lines[3]).to.equals('4\n')
-        })
+        outputWriter.writeTotal(outputs.length)
+        for(let output of outputs){
+            outputWriter.write(output)
+        }
+        expect(lines.length).to.equals(outputs.length + 1)
+        expect(lines[0]).to.equals('3\n')
+        expect(lines[1]).to.equals('1\n')
+        expect(lines[2]).to.equals('3 2\n')
+        expect(lines[3]).to.equals('4\n')
     })
 
 })
