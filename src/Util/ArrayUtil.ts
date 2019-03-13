@@ -17,3 +17,18 @@ export function common<T>(array1: Array<T>, array2: Array<T>): Array<T> {
     }
     return arr
 }
+
+export function distinct<T>(array1: Array<T>, array2: Array<T>): Array<T> {
+    let arr: Array<T> = []    
+    for(let value1 of array1){
+        if(!array2.includes(value1)){
+            arr.push(value1)
+        }
+    }
+    for(let value2 of array2){
+        if(!array1.includes(value2)){
+            arr.push(value2)
+        }
+    }
+    return arr
+}
