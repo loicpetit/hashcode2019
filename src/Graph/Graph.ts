@@ -11,9 +11,10 @@ export class Graph<T> {
         this.edges = []
     }
 
-    addNode(id: number, data: T): void {
+    addNode(id: number, data: T): Node<T> {
         if(!this.nodes.get(id)){
             this.nodes.set(id, new Node<T>(id, data))
+            return <Node<T>>this.nodes.get(id)
         }
         else {
             throw Error(`L\'id [${id}] existe`)

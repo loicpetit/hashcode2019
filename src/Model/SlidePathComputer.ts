@@ -3,13 +3,7 @@ import { Slide } from "./Slide";
 
 export class SlidePathComputer {
 
-    graph: Graph<Slide>
-
-    constructor(graph: Graph<Slide>){
-        this.graph = graph
-    }
-
-    getPath(): Slide[] {
+    getPath(graph: Graph<Slide>): Slide[] {
         return []
     }
 

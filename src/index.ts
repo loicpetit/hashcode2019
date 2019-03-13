@@ -6,6 +6,8 @@ import { InputParser } from './Model/InputParser'
 import { OutputParser } from './Model/OutputParser';
 import { SlidePathComputer } from './Model/SlidePathComputer';
 import { VPhotographParser } from './Model/VPhotographParser';
+import { PhotographScoreComputer } from './Model/PhotographScoreComputer';
+import { VSlideComputer } from './Model/VSlidesComputer';
 
 export default function(inputPath: string, outputPath: string):Promise<void> {
     
@@ -14,8 +16,9 @@ export default function(inputPath: string, outputPath: string):Promise<void> {
 
         // Parse input file
         console.log(`Lecture du fichier input [${inputPath}] et initialisation des arbres...`)
-        let vPhotographParser = new VPhotographParser()
-        let inputParser = new InputParser(vPhotographParser)
+        let vPhotographParser = new VPhotographParser(new PhotographScoreComputer())
+        let vSlideComputer = new VSlideComputer()
+        let inputParser = new InputParser(vPhotographParser, vSlideComputer)
         let inputStream = new InputStream(readline.createInterface({
             input: fs.createReadStream(inputPath, 'UTF-8')
         }))
@@ -26,12 +29,11 @@ export default function(inputPath: string, outputPath: string):Promise<void> {
             })
             .onEnd(() => {
                 console.log()
-                console.log('Creation des slides avec des photos verticales...')
-                let graph = inputParser.getSlideGraph()
 
-                console.log('Calcul des slides optimales...')   
-                let slidePathComputer = new SlidePathComputer(graph)
-                let slides = slidePathComputer.getPath()    
+                console.log('Calcul des slides optimales...')
+                let graph = inputParser.getSlideGraph()
+                let slidePathComputer = new SlidePathComputer()
+                let slides = slidePathComputer.getPath(graph)    
 
                 console.log(`Ecriture du fichier output [${outputPath}]...`)
                 let outputParser = new OutputParser()
