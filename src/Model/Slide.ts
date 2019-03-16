@@ -19,9 +19,6 @@ export class Slide {
             this.tags = merge(photograph1.tags, photograph2.tags)
         }
         else {
-            if(!photograph1.isHorizontal){
-                throw new Error('La photo unique d\'une slide doit etre horizontale')
-            }
             this.photograph1 = photograph1
             this.tags = []
             this.tags = Object.assign([], photograph1.tags)

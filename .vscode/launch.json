@@ -19,6 +19,18 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Debug Moments",
+            "program": "${workspaceRoot}\\src\\cli.ts",
+            "args": ["${workspaceRoot}\\input\\c_memorable_moments.txt", "${workspaceRoot}\\output\\c_memorable_moments.out.txt"],
+            "outFiles": [
+                "${workspaceRoot}\\dist\\**\\*.js"
+            ],
+            "preLaunchTask": "compile",
+            "protocol": "inspector"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Debug Pets",
             "program": "${workspaceRoot}\\src\\cli.ts",
             "args": ["${workspaceRoot}\\input\\d_pet_pictures.txt", "${workspaceRoot}\\output\\d_pet_pictures.out.txt"],

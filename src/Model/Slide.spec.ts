@@ -22,10 +22,6 @@ describe('Slide', () => {
             expect(slide.tags).to.not.equals(hphoto.tags)
             expect(slide.tags).to.deep.equals(hphoto.tags)
         })
-        
-        it('should throw error if the photograph is vertical', () => {
-            expect(() => new Slide(vphoto1)).to.throw()
-        })
 
     })
 
